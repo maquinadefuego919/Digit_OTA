@@ -18,11 +18,12 @@ module tt_um_Digit_OTA (
 
     wire Vip, Vin, Out;
     assign [0] uo_out  = Out;  // Example: ou_out is the sum of ui_in and uio_in
-    assign uo_out[7:1] = 7'b0000000:
+    assign uo_out[7:1] = 7'b0000000;
     
     
     assign Vip= ui_in [0]   ;
     assign Vin= ui_in [1];
+    assign uo_in[7:2] = 6'b000000;
   // All output pins must be assigned. If not used, assign to 0.
 wire INn, INp, CMP, EN, not_EN, Op, On, Pr, INn_CMP, INp_CMP, INp_And, INn_And; //internals nets
 not IV1 (INn, Vip);
