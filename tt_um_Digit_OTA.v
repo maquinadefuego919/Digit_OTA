@@ -16,10 +16,34 @@ module tt_um_Digit_OTA (
     input  wire       rst_n     // reset_n - low to reset
 );
 
+    wire Vip, Vin, Out;
+    assign [0] uo_out  = Out;  // Example: ou_out is the sum of ui_in and uio_in
+    assign uo_out[7:1] = 7'b0000000:
+    
+    
+    assign Vip= ui_in [0]   ;
+    assign Vin= ui_in [1];
   // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
+wire INn, INp, CMP, EN, not_EN, Op, On, Pr, INn_CMP, INp_CMP, INp_And, INn_And; //internals nets
+not IV1 (INn, Vip);
+not IV2 (INn, CMP);
+not IV3 (INp, Vin);
+not IV4 (INp, CMP);
+
+xor XOR1 (INn_And, INn, INn_CMP):
+xor XOR2 (INp_And, INp, Inp_CMP);
+    
+not IV5 (Op, INn_CMP);
+not IV6 (On, INp_CMP);
+    
+not IV7 (not_EN, EN);
+xor XOR1 (EN, Op, On);
+bufif1 BT1 (Pr, EN, Op);
+notif1 IT1 (CMP, not_EN, Op);
+   
   assign uio_out = 0;
-  assign uio_oe  = 0;
+    assign uio_oe  = 0;
+    
 
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, clk, rst_n, 1'b0};
