@@ -11,7 +11,7 @@ You can also include images in this folder and reference them in the markdown. E
 Low-voltage operational transconductance amplifier, high impedance output
 
 ## How to test
-Testbench
+Testbench code
 
 ## External hardware
 
